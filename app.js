@@ -32,7 +32,8 @@ function authorize_user(req,res) {
   res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
   console.log('auth')
 }
-
+//req.query.code = redirect code inside url after being redirected to general assembly
+// ex: code=5a24677df68b4ab383bd2337839ad8b1 (https://generalassemb.ly/?code=5a24677df68b4ab383bd2337839ad8b1&state=a+state)
 function handleauth(req, res) {
   api.authorize_user('5a24677df68b4ab383bd2337839ad8b1', redirect_uri, function(err, result) {
     if (err) {
