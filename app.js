@@ -8,7 +8,43 @@ var bodyParser = require('body-parser');
 var controller = require('./controllers/index');
 var users = require('./controllers/user_controller');
 
+var api = require('instagram-node').instagram();
 var app = express();
+
+// This is where you would initially send users to authorize
+app.get('/authorize_user', authorize_user);
+// This is your redirect URI
+app.get('/handleauth', handleauth);
+
+api.use({
+access_token: '261169793.bdea163.25487dc0790948e9b95e1957f7af0fc2'
+});
+
+api.use({
+  client_id: 'bdea16361b5641c9a78a572312476041',
+  client_secret: 'fe323443fc4149d58e9ac7c73c8a08f5'
+});
+
+var redirect_uri = 'http://generalassemb.ly';
+
+function authorize_user(req,res) {
+  console.log(res);
+  res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+  console.log('auth')
+}
+
+function handleauth(req, res) {
+  api.authorize_user('5a24677df68b4ab383bd2337839ad8b1', redirect_uri, function(err, result) {
+    if (err) {
+      console.log('hiiii');
+      console.log(err.body);
+      res.send("Didn't work");
+    } else {
+      console.log('Yay! Access token is ' + result.access_token);
+      res.send('You made it!!');
+    }
+  });
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

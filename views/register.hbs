@@ -10,5 +10,19 @@
             <input type="password" name="password" placeholder="password">
             <button>SIGN UP</button>
         </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+        <script>
+            $.ajax({
+                url: 'https://api.instagram.com/v1/tags/{banana}?access_token=de1c3a1f8f8f48daa56b8b97c80370ed',
+                type: 'get',
+                dataType: 'json',
+                success: function(data){
+                    console.log(data)
+                },
+                error: function(err){
+                    console.log(err)
+                }
+            })
+        </script>
     </body>
 </html>
