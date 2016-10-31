@@ -12,17 +12,12 @@ create table user_accounts (
     PRIMARY KEY (id)
 );
 
-create tables user_faves (
+create table photos (
     id INT NOT NULL AUTO_INCREMENT,
+    location INT NOT NULL VARCHAR(60),
+    artist INT NOT NULL VARCHAR(60),
     user_id INT NOT NULL REFERENCES user_accounts(id),
-    search_id INT NOT NULL REFERENCES search_pairs(id),
-    PRIMARY KEY (id)
-);
-
-create table search_pairs (
-    id INT NOT NULL AUTO_INCREMENT,
-    location VARCHAR(30),
-    artist VARCHAR(30),
+    image_as_base64 TEXT,
     PRIMARY KEY (id)
 );
 
