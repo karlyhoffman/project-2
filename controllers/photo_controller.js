@@ -8,13 +8,16 @@ photoCtrl.get('/upload', function(req, res, next){
 });
 
 function photoUpload(req, res, next){
+    console.log('this is session id');
+    console.log(req.session.userId);
     console.log(req.body);
     var photo = new PhotoModel({
         location: req.body.location,
         artist: req.body.artist,
-        user_id: '1',
+        user_id: req.session.userId,
         image_as_base64: req.body.image_as_base64
-    }).save()
+    }).save();
+    res.redirect('/home')
 }
 
 module.exports = photoCtrl;
