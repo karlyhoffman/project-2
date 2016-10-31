@@ -25,6 +25,10 @@ api.use({
   client_secret: 'fe323443fc4149d58e9ac7c73c8a08f5'
 });
 
+// Public Scope Access
+// https://www.instagram.com/oauth/authorize/?client_id=bdea16361b5641c9a78a572312476041&redirect_uri=http://generalassemb.ly&response_type=token&scope=public_content
+// https://generalassemb.ly/?code=4f0200e9581d4cf58919cec7eca8db14
+
 var redirect_uri = 'http://generalassemb.ly';
 
 function authorize_user(req,res) {
