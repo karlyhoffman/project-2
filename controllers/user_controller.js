@@ -1,6 +1,7 @@
 var express = require('express');
 var userCtrl = express.Router();
 var UserModel = require('../models/UserModel');
+var PhotoModel = require('../models/PhotoModel');
 var bcrypt = require('bcryptjs');
 var session = require('express-session');
 
@@ -18,12 +19,23 @@ userCtrl.get('/', function(req, res, next) {
 userCtrl.get('/register', renderRegister);
 userCtrl.get('/login', renderLogin);
 userCtrl.get('/home', function(req,res,next){
-    res.render('userHome',{
-        username: req.session.username + '!',
-        message: req.session.message
-    });
+    // PhotoModel.where('user_id', req.session.userId).fetch().then(function(result){
+    //     var photo = result.attributes.image_as_base64;
+    //     console.log(photo);
+    //     console.log('image as base!!');
+        res.render('userHome',{
+            username: req.session.username + '!',
+            message: req.session.message,
+            // photo: photo
+        });
+    // });
     req.session.userRegisteredMessage = '';
+});
 
+userCtrl.get('/photoAPI', function(req,res,next){
+    PhotoModel.collection().fetch().then(function(result){
+        res.json(result)
+    })
 });
 
 userCtrl.post('/register', attemptToRegister);
