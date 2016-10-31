@@ -3,7 +3,14 @@
 
     </head>
     <body>
+    <form action="/photoAPI" method="get">
+        <input type="text" name="location" placeholder="location" >
+        <input type="text" name="artist" placeholder="artist">
+        <button>SEARCH</button>
+    </form>
+        <div id ='photos'></div>
        <p>{{message}}{{username}}</p>
-       <img src="{{image_as_base64}}">
+       <img src={{photo}}>
+    <script src="scripts/photoajax.js"></script>
     </body>
 </html>
