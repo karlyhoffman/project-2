@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var controller = require('./controllers/index');
 var users = require('./controllers/user_controller');
 var photos = require('./controllers/photo_controller');
-
+//hi!//
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

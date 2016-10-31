@@ -23,7 +23,7 @@ userCtrl.get('/home', function(req,res,next){
         message: req.session.message
     });
     req.session.userRegisteredMessage = '';
-    console.log(req.session)
+
 });
 
 userCtrl.post('/register', attemptToRegister);
@@ -40,12 +40,14 @@ function attemptToRegister(req, res, next) {
                 email: req.body.email,
                 username: req.body.username,
                 password_hash: hashedPassword
-            }).save().then(function() {
+            }).save().then(function(user) {
+                console.log(user.attributes.id);
+                req.session.userId = user.attributes.id;
                 req.session.username = req.body.username;
                 req.session.message = 'thanks for joining cameraless concerts, ';
                 req.session.save();
                 console.log(req.session.username);
-                res.redirect('/home');
+                res.redirect('/photo/upload');
             });
         }
 
@@ -86,10 +88,11 @@ function attemptToLogin(req, res, next) {
                 console.log('result password');
                 console.log(result.attributes.password_hash);
                 if(attempt === true){
-                    res.redirect('/home');
+                    req.session.userId = result.attributes.id;
                     req.session.username = result.attributes.username;
                     req.session.message = 'welcome back to cameraless concerts, ';
                     req.session.save();
+                    res.redirect('/home');
                 }
                 else {
                     res.redirect('/login')
