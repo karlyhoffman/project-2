@@ -24,6 +24,7 @@ function photoUpload(req, res, next){
         user_account_id: req.session.userId,
         image_as_base64: req.body.image_as_base64
     }).save();
+    console.log(req.session);
     res.redirect('/home')
 }
 

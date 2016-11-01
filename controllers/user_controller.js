@@ -114,6 +114,7 @@ function attemptToLogin(req, res, next) {
                     req.session.message = 'welcome back to cameraless concerts, ';
                     req.session.userRegisteredMessage = '';
                     req.session.save();
+                    console.log(req.session);
                     res.redirect('/home');
                 }
                 else {

@@ -19,10 +19,10 @@ gulp.task('db_create_user_table', function() {
     function cb(res) {
         console.log(res);
     }
-    db.raw(sqlString).then(cb);
+    db.knex.raw(sqlString).then(cb);
     //db.raw(query).then(callback)
 });
-//
+
 // gulp.task('db_create_table_user_faves', function(){
 //     var sqlString = "CREATE TABLE user_faves (" +
 //         "id INT NOT NULL AUTO_INCREMENT, " +
@@ -51,7 +51,7 @@ gulp.task('db_create_photos_table', function(){
     function cb(res) {
         console.log(res);
     }
-    db.raw(sqlString).then(cb);
+    db.knex.raw(sqlString).then(cb);
     //db.raw(query).then(callback)
 });
 
@@ -61,7 +61,17 @@ gulp.task('db_drop_user_table', function() {
     function cb(res) {
         console.log(res);
     }
-    db.raw(sqlString).then(cb);
+    db.knex.raw(sqlString).then(cb);
+    //db.raw(query).then(callback)
+});
+
+gulp.task('db_drop_photos_table', function() {
+    var sqlString = "drop table photos;";
+    //callback(response)
+    function cb(res) {
+        console.log(res);
+    }
+    db.knex.raw(sqlString).then(cb);
     //db.raw(query).then(callback)
 });
 
