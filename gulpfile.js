@@ -38,13 +38,13 @@ gulp.task('db_create_user_table', function() {
 //     //db.raw(query).then(callback)
 // });
 
-gulp.task('db_create_table_photos', function(){
+gulp.task('db_create_photos_table', function(){
     var sqlString = "CREATE TABLE photos (" +
         "id INT NOT NULL AUTO_INCREMENT, " +
         "location VARCHAR(30), " +
         "artist VARCHAR(30), " +
-        "user_id INT NOT NULL REFERENCES user_accounts(id)," +
-        "image_as_base64 TEXT," +
+        "user_account_id INT NOT NULL REFERENCES user_accounts(id)," +
+        "image_as_base64 LONGTEXT," +
         "PRIMARY KEY (id) " +
         ");";
     //callback(response)

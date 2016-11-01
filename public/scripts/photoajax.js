@@ -1,9 +1,18 @@
 console.log('connected');
 
-$('button').on('click', function(e){
-    e.preventDefault();
-    var location = $('input[name=location]').val();
-    var artist = $('input[name=artist]').val();
+$('button').on('click', function(event){
+    function removeThe(){
+        var the = new RegExp('the ');
+        var artistInput =  $("input[name='artist']").val().toLowerCase();
+        var locationInput =  $("input[name='location']").val().toLowerCase();
+        var artistRemoved = artistInput.replace(the, '');
+        var locationRemoved = locationInput.replace(the, '');
+        console.log(artistRemoved);
+        console.log(locationRemoved);
+    clearPhotos();
+    event.preventDefault();
+    var location = locationRemoved;
+    var artist = artistRemoved;
     $.ajax({
         url: '/photoAPI/',
         type: 'get', // type of request you're making
@@ -18,12 +27,20 @@ $('button').on('click', function(e){
             }
             for (var j = 0; j < searchResults.length; j++){
                 $('#photos').append('<img src="' + searchResults[j].image_as_base64 +'">');
-                console.log(searchResults[j].image_as_base64);
             }
-            console.log(searchResults)
         },
         error: function(err){ // if request call is not successful then error message will log
             console.log(err)
         }
     });
+    }
+    removeThe();
+
+    $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
+    $('#photos').velocity('scroll', { duration: 700});
 });
+
+function clearPhotos(){
+    $('img').velocity('fadeOut', {duration: 100}).remove();
+    $('#photos').css('display','none');
+}

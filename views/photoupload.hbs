@@ -1,17 +1,12 @@
-<html>
-    <head>
 
-    </head>
-    <body>
-    <h1> photo upload </h1>
     <form action="/photo/upload" method="post">
+        <input type="text" name="artist" placeholder="artist">
         <input type="text" name="location" placeholder="location">
-        <input type="text" name="artist" placeholder="arist">
         <input type="file" name="photo" placeholder="photo">
         <input type="hidden" name="image_as_base64">
-        <input type="submit" value="Upload">
+        <button>upload</button>
     </form>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function(event) {
             // select our input DOM element with a type of file
@@ -47,5 +42,3 @@
             }
         });
         </script>
-    </body>
-</html>

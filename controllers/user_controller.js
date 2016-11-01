@@ -11,11 +11,15 @@ userCtrl.use(session({
     saveUninitialized: true
 }));
 
-/* GET users listing. */
-userCtrl.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+
+userCtrl.get('/yo', function (req, res, next){
+  UserModel.where({id:2}).fetch({withRelated:['photos']})
+      .then(function(user){
+          res.json(user.related('photos'))
+      })
 });
 
+/* GET users listing. */
 userCtrl.get('/register', renderRegister);
 userCtrl.get('/login', renderLogin);
 userCtrl.get('/home', function(req,res,next){
@@ -24,8 +28,8 @@ userCtrl.get('/home', function(req,res,next){
     //     console.log(photo);
     //     console.log('image as base!!');
         res.render('userHome',{
-            username: req.session.username + '!',
-            message: req.session.message,
+            username: req.session.username,
+            message: req.session.message
             // photo: photo
         });
     // });
@@ -36,6 +40,10 @@ userCtrl.get('/photoAPI', function(req,res,next){
     PhotoModel.collection().fetch().then(function(result){
         res.json(result)
     })
+});
+
+userCtrl.get('/', function(req, res, next) {
+    res.send('respond with a resource');
 });
 
 userCtrl.post('/register', attemptToRegister);
@@ -65,7 +73,8 @@ function attemptToRegister(req, res, next) {
 
         // if already registered use email or username to retrieve password and login ?
         else if (result.attributes.email === req.body.email || result.attributes.username == req.body.username){
-            req.session.userRegisteredMessage = 'you already have an account! please ';
+            req.session.userRegisteredMessage = 'you already have an account! please log in!';
+            req.session.passwordMessage = '';
             res.redirect('/login');
         }
         }).catch(function(err){
@@ -103,10 +112,14 @@ function attemptToLogin(req, res, next) {
                     req.session.userId = result.attributes.id;
                     req.session.username = result.attributes.username;
                     req.session.message = 'welcome back to cameraless concerts, ';
+                    req.session.userRegisteredMessage = '';
                     req.session.save();
                     res.redirect('/home');
                 }
                 else {
+                    req.session.userRegisteredMessage = '';
+                    req.session.passwordMessage = 'incorrect password, please try again!';
+                    req.session.save();
                     res.redirect('/login')
                 }
             }
@@ -121,7 +134,8 @@ function renderRegister(req,res,next){
 }
 function renderLogin(req,res,next){
     res.render('login',{
-        userRegisteredMessage: req.session.userRegisteredMessage
+        userRegisteredMessage: req.session.userRegisteredMessage,
+        incorrectPassword: req.session.passwordMessage
     });
 }
 
