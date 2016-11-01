@@ -11,8 +11,8 @@ $('button').on('click', function(event){
         console.log(locationRemoved);
     clearPhotos();
     event.preventDefault();
-    var location = locationRemoved;
-    var artist = artistRemoved;
+    var location = locationRemoved || 'nowhere';
+    var artist = artistRemoved || 'no one';
     $.ajax({
         url: '/photoAPI/',
         type: 'get', // type of request you're making
@@ -23,24 +23,30 @@ $('button').on('click', function(event){
                 if(data[i].location === location){
                     if(data[i].artist === artist)
                         searchResults.push(data[i]);
-                }
-            }
-            for (var j = 0; j < searchResults.length; j++){
-                $('#photos').append('<img src="' + searchResults[j].image_as_base64 +'">');
-            }
+                }; 
+            };
+            if ( searchResults.length === 0 ){
+                $('#photos').append('<p id="noResultMessage"> Sorry, no one here took photos of ' + artist + ' at ' + location + '.</p>');
+            } else if ( searchResults.length > 0 ){
+                for (var j = 0; j < searchResults.length; j++){
+                    $('#photos').append('<img src="' + searchResults[j].image_as_base64 +'">');
+                };
+            };
         },
         error: function(err){ // if request call is not successful then error message will log
             console.log(err)
-        }
+        };
     });
     }
     removeThe();
 
     $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
     $('#photos').velocity('scroll', { duration: 700});
+
 });
 
 function clearPhotos(){
     $('img').velocity('fadeOut', {duration: 100}).remove();
+    $('#noResultMessage').velocity('fadeOut', {duration: 100}).remove();
     $('#photos').css('display','none');
 }
