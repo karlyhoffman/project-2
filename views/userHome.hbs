@@ -3,14 +3,16 @@
 
     </head>
     <body>
-    <form action="/photoAPI" method="get">
-        <input type="text" name="location" placeholder="location" >
-        <input type="text" name="artist" placeholder="artist">
-        <button>SEARCH</button>
-    </form>
+        <p>{{message}}{{username}}</p>
+        <form action="/photoAPI" method="get">
+            <input type="text" name="artist" placeholder="artist">
+            <input type="text" name="location" placeholder="location" >
+            <button>SEARCH</button>
+        </form>
         <div id ='photos'></div>
-       <p>{{message}}{{username}}</p>
-       <img src={{photo}}>
-    <script src="scripts/photoajax.js"></script>
+        <img src={{photo}}>
+
+        <script src="scripts/velocity.min.js"></script>
+        <script src="scripts/photoajax.js"></script>
     </body>
 </html>

@@ -1,6 +1,7 @@
 console.log('connected');
 
 $('button').on('click', function(e){
+    clearPhotos();
     e.preventDefault();
     var location = $('input[name=location]').val();
     var artist = $('input[name=artist]').val();
@@ -18,12 +19,17 @@ $('button').on('click', function(e){
             }
             for (var j = 0; j < searchResults.length; j++){
                 $('#photos').append('<img src="' + searchResults[j].image_as_base64 +'">');
-                console.log(searchResults[j].image_as_base64);
             }
-            console.log(searchResults)
         },
         error: function(err){ // if request call is not successful then error message will log
             console.log(err)
         }
     });
+    $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
+    $('#photos').velocity('scroll', { duration: 700});
 });
+
+function clearPhotos(){
+    $('img').velocity('fadeOut', {duration: 100}).remove();
+    $('#photos').css('display','none');
+}

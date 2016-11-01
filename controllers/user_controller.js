@@ -24,8 +24,8 @@ userCtrl.get('/home', function(req,res,next){
     //     console.log(photo);
     //     console.log('image as base!!');
         res.render('userHome',{
-            username: req.session.username + '!',
-            message: req.session.message,
+            username: req.session.username,
+            message: req.session.message
             // photo: photo
         });
     // });
@@ -65,7 +65,7 @@ function attemptToRegister(req, res, next) {
 
         // if already registered use email or username to retrieve password and login ?
         else if (result.attributes.email === req.body.email || result.attributes.username == req.body.username){
-            req.session.userRegisteredMessage = 'you already have an account! please ';
+            req.session.userRegisteredMessage = 'you already have an account! please log in!';
             res.redirect('/login');
         }
         }).catch(function(err){
