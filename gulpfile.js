@@ -19,7 +19,7 @@ gulp.task('db_create_user_table', function() {
     function cb(res) {
         console.log(res);
     }
-    db.raw(sqlString).then(cb);
+    db.knex.raw(sqlString).then(cb);
     //db.raw(query).then(callback)
 });
 //
@@ -51,7 +51,7 @@ gulp.task('db_create_photos_table', function(){
     function cb(res) {
         console.log(res);
     }
-    db.raw(sqlString).then(cb);
+    db.knex.raw(sqlString).then(cb);
     //db.raw(query).then(callback)
 });
 
@@ -61,7 +61,7 @@ gulp.task('db_drop_user_table', function() {
     function cb(res) {
         console.log(res);
     }
-    db.raw(sqlString).then(cb);
+    db.knex.raw(sqlString).then(cb);
     //db.raw(query).then(callback)
 });
 
