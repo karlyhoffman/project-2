@@ -1,10 +1,18 @@
 console.log('connected');
 
-$('button').on('click', function(e){
+$('button').on('click', function(event){
+    function removeThe(){
+        var the = new RegExp('the ');
+        var artistInput =  $("input[name='artist']").val().toLowerCase();
+        var locationInput =  $("input[name='location']").val().toLowerCase();
+        var artistRemoved = artistInput.replace(the, '');
+        var locationRemoved = locationInput.replace(the, '');
+        console.log(artistRemoved);
+        console.log(locationRemoved);
     clearPhotos();
-    e.preventDefault();
-    var location = $('input[name=location]').val();
-    var artist = $('input[name=artist]').val();
+    event.preventDefault();
+    var location = locationRemoved;
+    var artist = artistRemoved;
     $.ajax({
         url: '/photoAPI/',
         type: 'get', // type of request you're making
@@ -25,6 +33,9 @@ $('button').on('click', function(e){
             console.log(err)
         }
     });
+    }
+    removeThe();
+
     $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
     $('#photos').velocity('scroll', { duration: 700});
 });

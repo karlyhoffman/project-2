@@ -43,7 +43,7 @@ gulp.task('db_create_photos_table', function(){
         "id INT NOT NULL AUTO_INCREMENT, " +
         "location VARCHAR(30), " +
         "artist VARCHAR(30), " +
-        "user_id INT NOT NULL REFERENCES user_accounts(id)," +
+        "user_account_id INT NOT NULL REFERENCES user_accounts(id)," +
         "image_as_base64 LONGTEXT," +
         "PRIMARY KEY (id) " +
         ");";

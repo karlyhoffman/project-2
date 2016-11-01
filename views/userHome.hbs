@@ -1,18 +1,12 @@
-<html>
-    <head>
 
-    </head>
-    <body>
-        <p>{{message}}{{username}}</p>
-        <form action="/photoAPI" method="get">
-            <input type="text" name="artist" placeholder="artist">
-            <input type="text" name="location" placeholder="location" >
-            <button>SEARCH</button>
-        </form>
-        <div id ='photos'></div>
-        <img src={{photo}}>
+    <p>{{message}}{{username}}</p>
+    <form action="/" method="">
+        <input type="text" name="artist" placeholder="artist" class="inputvalue">
+        <input type="text" name="location" placeholder="location" class="inputvalue">
 
-        <script src="scripts/velocity.min.js"></script>
-        <script src="scripts/photoajax.js"></script>
-    </body>
-</html>
+    </form>
+    <button>SEARCH</button>
+    <div id ='photos'></div>
+    <img src={{photo}}>
+
+    <script src="scripts/photoajax.js"></script>
