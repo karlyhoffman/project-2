@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-var controller = require('./controllers/index');
 var users = require('./controllers/user_controller');
 var photos = require('./controllers/photo_controller');
 
@@ -32,7 +31,6 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', users);
-app.use('/index', controller);
 app.use('/photo', photos);
 
 // catch 404 and forward to error handler

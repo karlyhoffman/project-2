@@ -70,7 +70,6 @@ function attemptToRegister(req, res, next) {
                 res.redirect('/photo/upload');
             });
         }
-
         // if already registered use email or username to retrieve password and login ?
         else if (result.attributes.email === req.body.email || result.attributes.username == req.body.username){
             req.session.userRegisteredMessage = 'you already have an account! please log in!';
@@ -109,6 +108,7 @@ function attemptToLogin(req, res, next) {
                 console.log('result password');
                 console.log(result.attributes.password_hash);
                 if(attempt === true){
+                    req.session.isLoggedIn = true;
                     req.session.userId = result.attributes.id;
                     req.session.username = result.attributes.username;
                     req.session.message = 'welcome back to cameraless concerts, ';
@@ -136,7 +136,8 @@ function renderRegister(req,res,next){
 function renderLogin(req,res,next){
     res.render('login',{
         userRegisteredMessage: req.session.userRegisteredMessage,
-        incorrectPassword: req.session.passwordMessage
+        incorrectPassword: req.session.passwordMessage,
+        notLoggedInMessage: req.session.notLoggedInMessage
     });
 }
 
