@@ -62,6 +62,7 @@ gulp.task('db_drop_user_table', function() {
         console.log(res);
     }
     db.knex.raw(sqlString).then(cb);
+<<<<<<< HEAD
     //db.raw(query).then(callback)
 });
 
@@ -72,6 +73,8 @@ gulp.task('db_drop_photos_table', function() {
         console.log(res);
     }
     db.knex.raw(sqlString).then(cb);
+=======
+>>>>>>> 07003041891e0c0cfe771cc5bc68e7ccf0599fad
     //db.raw(query).then(callback)
 });
 
