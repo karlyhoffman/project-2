@@ -63,6 +63,11 @@ a:visited{
   text-decoration: none;
 }
 
+a:hover{
+  color: #c6c6c6;
+  text-decoration: none;
+}
+
 button{
   background-color: white;
   outline: grey;
@@ -84,6 +89,11 @@ button{
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+button:hover{
+  color: #000;
+  border: 1px solid #555;
 }
 
 form{
@@ -130,11 +140,14 @@ input:focus {
 }
 
 img {
-  padding: 2%;
+  padding: 2% 2% 0 2%;
   max-width: 85%;
   max-height: 85%;
 }
 
+h6{
+  margin: 1% 0 5% 0;
+}
 #photos{
   display:none;
 }
