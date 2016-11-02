@@ -29,7 +29,14 @@ $('button').on('click', function(event){
                 $('#photos').append('<p id="noResultMessage"> Sorry, no one here took photos of ' + artistInput + ' at ' + locationInput + '.</p>');
             } else if ( searchResults.length > 0 ){
                 for (var j = 0; j < searchResults.length; j++){
-                    $('#photos').append('<img src="' + searchResults[j].image_as_base64 +'">');
+                    var photoBox = $('<span/>');
+                    $('#photos').append(photoBox);
+                    $(photoBox).prop('id','photo-' +j);
+                    $('#photo-'+j).append('<img src="' + searchResults[j].image_as_base64 + '">');
+                    var photoCaption = $('<h6>');
+                    $('#photo-'+j).append(photoCaption);
+                    $(photoCaption).prop('id','photocaption-' +j);
+                    $('#photocaption-'+j).text(searchResults[j].artist + ' at ' + searchResults[j].location)
                 }
             }
         },
