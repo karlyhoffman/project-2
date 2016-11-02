@@ -10,7 +10,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 var users = require('./controllers/user_controller');
 var photos = require('./controllers/photo_controller');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

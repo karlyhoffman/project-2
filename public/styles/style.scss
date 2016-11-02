@@ -20,6 +20,10 @@ h1 {
   clear: both;
 }
 
+h1, h2, h3, h4, h5, h6, p, body {
+  font-weight: 100;
+}
+
 nav {
   background-color: transparent;
   color: black;
@@ -127,4 +131,17 @@ img {
 
 #photos{
   display:none;
+}
+
+#hiddenUserIdPlaceholder{
+  display:none;
+  visibility: hidden;
+}
+
+#welcomeMessage{
+  padding: 0 0 5% 0;
+}
+
+#about{
+  margin: 0 5% 5% 5%;
 }

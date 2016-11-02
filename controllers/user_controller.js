@@ -23,16 +23,26 @@ userCtrl.get('/yo', function (req, res, next){
 userCtrl.get('/register', renderRegister);
 userCtrl.get('/login', renderLogin);
 userCtrl.get('/home', function(req,res,next){
-    // PhotoModel.where('user_id', req.session.userId).fetch().then(function(result){
+    // PhotoModel.where('user_account_id', req.session.userId).fetch().then(function(result){
     //     var photo = result.attributes.image_as_base64;
     //     console.log(photo);
     //     console.log('image as base!!');
-        res.render('userHome',{
+        res.render('account',{
             username: req.session.username,
-            message: req.session.message
+            message: req.session.message,
+            id: req.session.userId
             // photo: photo
         });
     // });
+    req.session.userRegisteredMessage = '';
+});
+
+userCtrl.get('/search', function(req,res,next){
+    res.render('search',{
+        username: req.session.username,
+        message: req.session.message,
+        id: req.session.userId
+    });
     req.session.userRegisteredMessage = '';
 });
 
@@ -43,7 +53,7 @@ userCtrl.get('/photoAPI', function(req,res,next){
 });
 
 userCtrl.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.render('landing', {})
 });
 
 userCtrl.post('/register', attemptToRegister);
@@ -62,6 +72,7 @@ function attemptToRegister(req, res, next) {
                 password_hash: hashedPassword
             }).save().then(function(user) {
                 console.log(user.attributes.id);
+                req.session.isLoggedIn = true;
                 req.session.userId = user.attributes.id;
                 req.session.username = req.body.username;
                 req.session.message = 'thanks for joining cameraless concerts, ';
@@ -70,7 +81,6 @@ function attemptToRegister(req, res, next) {
                 res.redirect('/photo/upload');
             });
         }
-
         // if already registered use email or username to retrieve password and login ?
         else if (result.attributes.email === req.body.email || result.attributes.username == req.body.username){
             req.session.userRegisteredMessage = 'you already have an account! please log in!';
@@ -109,6 +119,7 @@ function attemptToLogin(req, res, next) {
                 console.log('result password');
                 console.log(result.attributes.password_hash);
                 if(attempt === true){
+                    req.session.isLoggedIn = true;
                     req.session.userId = result.attributes.id;
                     req.session.username = result.attributes.username;
                     req.session.message = 'welcome back to cameraless concerts, ';
@@ -136,7 +147,8 @@ function renderRegister(req,res,next){
 function renderLogin(req,res,next){
     res.render('login',{
         userRegisteredMessage: req.session.userRegisteredMessage,
-        incorrectPassword: req.session.passwordMessage
+        incorrectPassword: req.session.passwordMessage,
+        notLoggedInMessage: req.session.notLoggedInMessage
     });
 }
 

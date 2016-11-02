@@ -1,12 +1,10 @@
 
-        <form action="/login" method="post">
-            <input type="text" name="user" placeholder="email or username">
-            <input type="password" name="password" placeholder="password">
-            <button>LOG IN</button>
-            <p id="alertMessage">{{userRegisteredMessage}}{{incorrectPassword}}</p>
-        </form>
-    </body>
-
+    <form action="/login" method="post">
+        <input type="text" name="user" placeholder="email or username">
+        <input type="password" name="password" placeholder="password">
+        <button>SIGN IN</button>
+        <p id="alertMessage">{{userRegisteredMessage}}{{incorrectPassword}}{{notLoggedInMessage}}</p>
+    </form>
     <script>
         $('#alertMessage').velocity('fadeOut', { delay: 2000, duration: 1000 });
     </script>
