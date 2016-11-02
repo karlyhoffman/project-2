@@ -35,7 +35,7 @@ $('button').on('click', function(event){
         },
         error: function(err){ // if request call is not successful then error message will log
             console.log(err)
-        };
+        }
     });
     }
     removeThe();
