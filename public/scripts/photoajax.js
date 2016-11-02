@@ -29,7 +29,7 @@ $('button').on('click', function(event){
                 $('#photos').append('<p id="noResultMessage"> Sorry, no one here took photos of ' + artistInput + ' at ' + locationInput + '.</p>');
             } else if ( searchResults.length > 0 ){
                 for (var j = 0; j < searchResults.length; j++){
-                    $('#photos').append('<img class="materialboxed" src="' + searchResults[j].image_as_base64 +'">');
+                    $('#photos').append('<img src="' + searchResults[j].image_as_base64 +'">');
                 }
             }
         },

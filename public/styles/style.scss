@@ -125,8 +125,8 @@ input:focus {
 
 img {
   padding: 2%;
-  max-width: 25%;
-  max-height: 25%;
+  max-width: 85%;
+  max-height: 85%;
 }
 
 #photos{
@@ -144,4 +144,11 @@ img {
 
 #about{
   margin: 0 5% 5% 5%;
+}
+
+span{
+  width: 33%;
+  float: left;
+  padding: 0;
+  margin: 0;
 }
