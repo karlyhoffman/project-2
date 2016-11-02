@@ -15,16 +15,14 @@ $(document).ready(function(){
             }
             if (searchResults.length > 0) {
                 for (var j = 0; j < searchResults.length; j++) {
-                    var newDiv = ('<div class="photo">');
-                    $('#photos').append(newDiv);
-                    $('.photo').append('<img src="' + searchResults[j].image_as_base64 + '">');
-                    $(newDiv).prop('id',j);
-                    $('#'+j).append('<h6></h6>');
+                    $('#photos').append('<div id="'+ j +'"><img src="' + searchResults[j].image_as_base64 + '"></div>');
+                    // $('#' + j ).append('<h6>' + text(searchResults[k].artist + ' at ' + searchResults[k].location + '</h6>');
+                     $("'#" + j + "'").append('<h6>' + text(searchResults[k].artist + ' at ' + searchResults[k].location + '</h6>');
                 }
             }
-            for(var k = 0; k < searchResults.length; k++){
-                $('h6').text(searchResults[k].artist + 'at' + searchResults[k].location)
-            }
+            // for(var k = 0; k < searchResults.length; k++){
+            //     $('h6').text(searchResults[k].artist + 'at' + searchResults[k].location)
+            // }
             console.log(searchResults)
         },
         error: function(err){ // if request call is not successful then error message will log
