@@ -23,6 +23,9 @@ userCtrl.get('/yo', function (req, res, next){
 userCtrl.get('/register', renderRegister);
 userCtrl.get('/login', renderLogin);
 userCtrl.get('/home', function(req,res,next){
+    if(!req.session.isLoggedIn){
+        res.redirect('/login')
+    }
     // PhotoModel.where('user_account_id', req.session.userId).fetch().then(function(result){
     //     var photo = result.attributes.image_as_base64;
     //     console.log(photo);
@@ -39,7 +42,7 @@ userCtrl.get('/home', function(req,res,next){
 
 userCtrl.get('/search', function(req,res,next){
     res.render('search',{
-        username: req.session.username,
+        username: req.session.username ||'account',
         message: req.session.message,
         id: req.session.userId
     });
@@ -52,8 +55,17 @@ userCtrl.get('/photoAPI', function(req,res,next){
     })
 });
 
+userCtrl.get('/logout', function(req, res, next) {
+    req.session.destroy();
+    console.log('this is destroyed session');
+    console.log(req.session);
+    res.redirect('/')
+});
+
 userCtrl.get('/', function(req, res, next) {
-    res.render('landing', {})
+    res.render('landing', {
+        username: req.session.username ||'account'
+    })
 });
 
 userCtrl.post('/register', attemptToRegister);
@@ -142,10 +154,13 @@ function attemptToLogin(req, res, next) {
 }
 
 function renderRegister(req,res,next){
-    res.render('register',{})
+    res.render('register',{
+        username: req.session.username ||'account'
+    })
 }
 function renderLogin(req,res,next){
     res.render('login',{
+        username: req.session.username ||'account',
         userRegisteredMessage: req.session.userRegisteredMessage,
         incorrectPassword: req.session.passwordMessage,
         notLoggedInMessage: req.session.notLoggedInMessage

@@ -4,7 +4,9 @@ var PhotoModel = require('../models/PhotoModel');
 
 photoCtrl.post('/upload', photoUpload);
 photoCtrl.get('/upload', function(req, res, next){
-    res.render('photoupload',{})
+    res.render('photoupload',{
+        username: req.session.username ||'account'
+    })
 });
 
 function photoUpload(req, res, next){

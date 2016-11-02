@@ -19,8 +19,10 @@ console.log('linekd');
                     $('#photos').append(photoBox);
                     $(photoBox).prop('id','photo-' +j);
                     $('#photo-'+j).append('<img src="' + searchResults[j].image_as_base64 + '">');
-                    $('#photo-'+j).append('<h6></h6>');
-                    $('h6').text(searchResults[j].artist + ' at ' + searchResults[j].location)
+                    var photoCaption = $('<h6>');
+                    $('#photo-'+j).append(photoCaption);
+                    $(photoCaption).prop('id','photocaption-' +j);
+                    $('#photocaption-'+j).text(searchResults[j].artist + ' at ' + searchResults[j].location)
                 }
             }
             console.log(searchResults)
