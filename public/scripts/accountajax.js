@@ -1,5 +1,5 @@
-console.log('linekd');
-$(document).ready(function(){
+console.log('linked');
+// $(document).ready(function(){
     var id =  $('#hiddenUserIdPlaceholder').text();
     var parsedId = parseInt(id);
     $.ajax({
@@ -15,14 +15,16 @@ $(document).ready(function(){
             }
             if (searchResults.length > 0) {
                 for (var j = 0; j < searchResults.length; j++) {
-                    $('#photos').append('<div id="'+ j +'"><img src="' + searchResults[j].image_as_base64 + '"></div>');
-                    // $('#' + j ).append('<h6>' + text(searchResults[k].artist + ' at ' + searchResults[k].location + '</h6>');
-                     $("'#" + j + "'").append('<h6>' + text(searchResults[k].artist + ' at ' + searchResults[k].location + '</h6>');
+                    var photoBox = $('<span/>');
+                    $('#photos').append(photoBox);
+                    $(photoBox).prop('id','photo-' +j);
+                    $('#photo-'+j).append('<img src="' + searchResults[j].image_as_base64 + '">');
+                    var photoCaption = $('<h6>');
+                    $('#photo-'+j).append(photoCaption);
+                    $(photoCaption).prop('id','photocaption-' +j);
+                    $('#photocaption-'+j).text(searchResults[j].artist + ' at ' + searchResults[j].location)
                 }
             }
-            // for(var k = 0; k < searchResults.length; k++){
-            //     $('h6').text(searchResults[k].artist + 'at' + searchResults[k].location)
-            // }
             console.log(searchResults)
         },
         error: function(err){ // if request call is not successful then error message will log
@@ -31,5 +33,4 @@ $(document).ready(function(){
     });
     $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
     $('#photos').velocity('scroll', { duration: 700});
-});
-
+// });

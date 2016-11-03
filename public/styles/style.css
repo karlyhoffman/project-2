@@ -121,3 +121,8 @@ img {
 
 #about {
   margin: 0 5% 5% 5%; }
+
+#aboutInfo {
+  margin: 5% auto;
+  width: 70%;
+  line-height: 2.25rem; }

@@ -23,21 +23,6 @@ gulp.task('db_create_user_table', function() {
     //db.raw(query).then(callback)
 });
 
-// gulp.task('db_create_table_user_faves', function(){
-//     var sqlString = "CREATE TABLE user_faves (" +
-//         "id INT NOT NULL AUTO_INCREMENT, " +
-//         "user_id INT NOT NULL REFERENCES user_accounts(id), " +
-//         "search_id INT NOT NULL REFERENCES search_pairs(id), " +
-//         "PRIMARY KEY (id) " +
-//         ");";
-//     //callback(response)
-//     function cb(res) {
-//         console.log(res);
-//     }
-//     db.raw(sqlString).then(cb);
-//     //db.raw(query).then(callback)
-// });
-
 gulp.task('db_create_photos_table', function(){
     var sqlString = "CREATE TABLE photos (" +
         "id INT NOT NULL AUTO_INCREMENT, " +
