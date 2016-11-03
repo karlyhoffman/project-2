@@ -1,10 +1,10 @@
 console.log('connected');
 
-$('button').on('click', function(event){
+$('#search').on('click', function(event){
     function removeThe(){
         var the = new RegExp('the ');
-        var artistInput =  $("input[name='artist']").val().toLowerCase() || 'no one';
-        var locationInput =  $("input[name='location']").val().toLowerCase() || 'nowhere';
+        var artistInput =  $("input[name='artist']").val().toLowerCase().trim() || 'no one';
+        var locationInput =  $("input[name='location']").val().toLowerCase().trim() || 'nowhere';
         var artistRemoved = artistInput.replace(the, '');
         var locationRemoved = locationInput.replace(the, '');
         console.log(artistRemoved);
@@ -58,3 +58,34 @@ function clearPhotos(){
     $('#noResultMessage').velocity('fadeOut', {duration: 100}).remove();
     $('#photos').css('display','none');
 }
+
+$('#viewAll').on('click', function(event) {
+    clearPhotos();
+    $.ajax({
+        url: '/photoAPI/',
+        type: 'get', // type of request you're making
+        dataType: 'json',
+        success: function (data) {
+            var searchResults = [];
+            for (var i = 0; i < data.length; i++) {
+                searchResults.push(data[i]);
+            }
+            console.log(searchResults);
+            for (var j = 0; j < searchResults.length || j < 20; j++) {
+                var photoBox = $('<span/>');
+                $('#photos').append(photoBox);
+                $(photoBox).prop('id', 'photo-' + j);
+                $('#photo-' + j).append('<img src="' + searchResults[j].image_as_base64 + '">');
+                var photoCaption = $('<h6>');
+                $('#photo-' + j).append(photoCaption);
+                $(photoCaption).prop('id', 'photocaption-' + j);
+                $('#photocaption-' + j).text(searchResults[j].artist + ' at ' + searchResults[j].location)
+            }
+        },
+        error: function (err) { // if request call is not successful then error message will log
+            console.log(err)
+        }
+    });
+    $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
+    $('#photos').velocity('scroll', { duration: 700});
+});
