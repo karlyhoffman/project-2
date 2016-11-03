@@ -150,6 +150,11 @@ span {
   padding: 0;
   margin: 0 0 1% 0; }
 
+#aboutInfo {
+  width: 70%;
+  line-height: 2.25rem;
+  margin: 0 auto; }
+
 a:hover.nohover {
   color: #000;
   text-decoration: none; }
