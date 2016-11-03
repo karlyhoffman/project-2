@@ -16,13 +16,7 @@ create table photos (
     id INT NOT NULL AUTO_INCREMENT,
     location INT NOT NULL VARCHAR(60),
     artist INT NOT NULL VARCHAR(60),
-    user_id INT NOT NULL REFERENCES user_accounts(id),
-    image_as_base64 TEXT,
+    user_account_id INT NOT NULL REFERENCES user_accounts(id),
+    image_as_base64 LONGTEXT,
     PRIMARY KEY (id)
 );
-
-
-insert into user_accounts (email, password_hash) VALUES ('','');
-insert into search_pairs (location, artist) VALUES ('','');
-
-select * from ;

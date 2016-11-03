@@ -1,4 +1,4 @@
-console.log('linekd');
+console.log('linked');
 // $(document).ready(function(){
     var id =  $('#hiddenUserIdPlaceholder').text();
     var parsedId = parseInt(id);
@@ -33,5 +33,8 @@ console.log('linekd');
     });
     $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
     $('#photos').velocity('scroll', { duration: 700});
+
 // });
+
+
 
