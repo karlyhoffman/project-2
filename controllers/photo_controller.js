@@ -4,19 +4,27 @@ var PhotoModel = require('../models/PhotoModel');
 
 photoCtrl.post('/upload', photoUpload);
 photoCtrl.get('/upload', function(req, res, next){
-    res.render('photoupload',{
-        username: req.session.username ||'account'
-    })
+    if(!req.session.isLoggedIn){
+        req.session.notLoggedInMessage = 'please log in before uploading photos';
+        req.session.fromUpload = true;
+        res.redirect('/login')
+    }
+    else{
+        res.render('photoupload',{
+            username: req.session.username ||'account'
+        })
+    }
 });
 
 function photoUpload(req, res, next){
     if (req.session.isLoggedIn){
+        console.log(req.session);
         console.log('this is session id');
         console.log(req.session.userId);
         console.log(req.body);
         var the = new RegExp('the ');
-        var artistInput =  (req.body.artist).toLowerCase();
-        var locationInput =  (req.body.location).toLowerCase();
+        var artistInput = (req.body.artist).toLowerCase();
+        var locationInput = (req.body.location).toLowerCase();
         var artistRemoved = artistInput.replace(the, '');
         var locationRemoved = locationInput.replace(the, '');
         console.log(artistRemoved);

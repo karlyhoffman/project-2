@@ -2,7 +2,6 @@ body {
   padding: 0;
   margin: 0;
   text-align: center;
-  font-family: 'Josefin Sans', Helvetica, sans-serif;
   font-size: 16px;
   letter-spacing: 0.25rem;
   color: black;
@@ -16,7 +15,12 @@ h1 {
   clear: both; }
 
 h1, h2, h3, h4, h5, h6, p, body {
-  font-weight: 100; }
+  font-weight: 100;
+  font-family: 'Josefin Sans', Helvetica, sans-serif; }
+
+button {
+  font-weight: 300;
+  font-family: 'Josefin Sans', Helvetica, sans-serif; }
 
 nav {
   background-color: transparent;
@@ -118,12 +122,14 @@ input:focus {
   z-index: -1; }
 
 img {
-  padding: 2% 2% 0 2%;
+  padding: 2% 7% 1% 7%;
   max-width: 85%;
   max-height: 85%; }
 
-h6 {
-  margin: 1% 0 5% 0; }
+.caption {
+  margin: 1% 0 5% 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem; }
 
 #photos {
   display: none; }
@@ -139,7 +145,11 @@ h6 {
   margin: 0 5% 5% 5%; }
 
 span {
-  width: 33%;
+  width: 33.33333%;
   float: left;
   padding: 0;
-  margin: 0; }
+  margin: 0 0 1% 0; }
+
+a:hover.nohover {
+  color: #000;
+  text-decoration: none; }
