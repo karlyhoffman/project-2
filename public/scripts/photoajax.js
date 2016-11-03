@@ -55,7 +55,7 @@ $('#search').on('click', function(event){
 
 function clearPhotos(){
     $('img').velocity('fadeOut', {duration: 100}).remove();
-    $('h6').velocity('fadeOut', {duration: 100}).remove();
+    $('.caption').velocity('fadeOut', {duration: 100}).remove();
     $('#noResultMessage').velocity('fadeOut', {duration: 100}).remove();
     $('#photos').css('display','none');
 }
