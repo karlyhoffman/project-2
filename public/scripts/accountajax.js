@@ -1,4 +1,3 @@
-console.log('linked');
 // $(document).ready(function(){
     var id =  $('#hiddenUserIdPlaceholder').text();
     var parsedId = parseInt(id);
@@ -19,7 +18,14 @@ console.log('linked');
                     $('#photos').append(photoBox);
                     $(photoBox).prop('id','photo-' +j);
                     $('#photo-'+j).append('<img src="' + searchResults[j].image_as_base64 + '">');
-                    var photoCaption = $('<h6>');
+                    var photoCaption = $('<a class="caption" href="search"></a>').on('click', function(){
+                        var splitCaptionArray = $(this).text().split(' at ');
+                            sessionStorage.setItem('artist', splitCaptionArray[0]);
+                            sessionStorage.setItem('location', splitCaptionArray[1]);
+                            console.log(sessionStorage.getItem('artist'));
+                            console.log(sessionStorage.getItem('location'));
+                            console.log('this is working')
+                    });
                     $('#photo-'+j).append(photoCaption);
                     $(photoCaption).prop('id','photocaption-' +j);
                     $('#photocaption-'+j).text(searchResults[j].artist + ' at ' + searchResults[j].location)
@@ -35,6 +41,4 @@ console.log('linked');
     $('#photos').velocity('scroll', { duration: 700});
 
 // });
-
-
 

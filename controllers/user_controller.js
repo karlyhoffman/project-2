@@ -138,6 +138,9 @@ function attemptToLogin(req, res, next) {
                     req.session.userRegisteredMessage = '';
                     req.session.save();
                     console.log(req.session);
+                    if(req.session.fromUpload){
+                        res.redirect('/photo/upload');
+                    }
                     res.redirect('/home');
                 }
                 else {

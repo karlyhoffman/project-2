@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project 2: Full-Stack Application
 
 ## Cameraless Concerts
@@ -36,12 +37,6 @@ Cameraless Concerts relieves the pressure of taking photos at concerts, because 
 - Stylize
 
 Wireframe: 890 x 590
-
-
-
-
-
-
 
 
 
