@@ -37,9 +37,8 @@ Cameraless Concerts relieves the pressure of taking photos at concerts, because 
 - Stylize
 
 Wireframes: 
-http://68.media.tumblr.com/dac534b67355aae38d2886a32474811e/tumblr_og321qs1cH1sq81swo1_1280.jpg
+![alt text](http://68.media.tumblr.com/dac534b67355aae38d2886a32474811e/tumblr_og321qs1cH1sq81swo1_1280.jpg "Wireframes")
 
 User Story:
-http://68.media.tumblr.com/3fd8d7ecf82a163789eac0e4ed0de410/tumblr_og31zgf7aM1sq81swo1_1280.png
-
+![alt text](http://68.media.tumblr.com/3fd8d7ecf82a163789eac0e4ed0de410/tumblr_og31zgf7aM1sq81swo1_1280.png "User Story")
 
