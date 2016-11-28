@@ -1,5 +1,5 @@
 
-# Project 2: Full-Stack Application
+# General Assembly - WDI Project #2: Full-Stack Application
 
 ## Cameraless Concerts
 ![alt text](http://68.media.tumblr.com/6d3a23ff6bac29d644c291c5911fe71d/tumblr_og32beryDT1sq81swo1_1280.png "Cameraless Concerts")
