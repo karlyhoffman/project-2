@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-# Project 2: Full-Stack Application
+
+# General Assembly - WDI Project #2: Full-Stack Application
 
 ## Cameraless Concerts
-![Cameraless Concerts](:http://68.media.tumblr.com/94490c4f74314fe1e5be8f098bc7c586/tumblr_og2nzsvDKk1sqel38o1_1280.png)
+![alt text](http://68.media.tumblr.com/6d3a23ff6bac29d644c291c5911fe71d/tumblr_og32beryDT1sq81swo1_1280.png "Cameraless Concerts")
 
 ## About:
 Share more, experience more.
@@ -36,8 +36,9 @@ Cameraless Concerts relieves the pressure of taking photos at concerts, because 
 - Create routes and controllers
 - Stylize
 
-Wireframe: 890 x 590
+Wireframes: 
+![alt text](http://68.media.tumblr.com/dac534b67355aae38d2886a32474811e/tumblr_og321qs1cH1sq81swo1_1280.jpg "Wireframes")
 
-
-
+User Story:
+![alt text](http://68.media.tumblr.com/3fd8d7ecf82a163789eac0e4ed0de410/tumblr_og31zgf7aM1sq81swo1_1280.png "User Story")
 
