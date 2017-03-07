@@ -2,7 +2,16 @@
 # General Assembly - WDI Project #2: Full-Stack Application
 
 ## Cameraless Concerts
-![alt text](http://68.media.tumblr.com/6d3a23ff6bac29d644c291c5911fe71d/tumblr_og32beryDT1sq81swo1_1280.png "Cameraless Concerts")
+Landing Page:  
+  
+![Landing Page](http://68.media.tumblr.com/6d3a23ff6bac29d644c291c5911fe71d/tumblr_og32beryDT1sq81swo1_1280.png "Cameraless Concerts")
+Searching for images of The National:  
+  
+![The National Search](images/the-national.png "The National Search")
+All User's Photos:  
+  
+![All User's Photos](images/cameraless-concerts.png "All User's Photos")
+
 
 ## About:
 Share more, experience more.
