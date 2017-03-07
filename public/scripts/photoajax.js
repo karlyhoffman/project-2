@@ -87,7 +87,7 @@ $('#viewAll').on('click', function(event) {
             console.log(err)
         }
     });
-    $('#photos').velocity('fadeIn', { delay: 150, duration: 500 });
+    $('#photos').velocity('fadeIn', {  duration: 500 });
     $('#photos').velocity('scroll', { duration: 700});
 });
 
